@@ -42,10 +42,13 @@ template_right = []
 game_on = False
 left = True
 
+l_found = 0
+r_found = 0
+
 pyautogui.click(200, 200)
 while True:
     game_frame = cap.get_screenshot()
-    
+
     # check if has play button on screen
     play_button = game_frame[p_but_cord[1]:p_but_cord[1]+1, p_but_cord[0]-1:p_but_cord[0]+1]
     if play_button[0][0][0] == p_but_color[0] and play_button[0][0][1] == p_but_color[1] and play_button[0][0][2] == p_but_color[2]:
@@ -61,7 +64,6 @@ while True:
             template_right = game_frame[d_r_cord[1]-25:d_r_cord[1], d_r_cord[0]:d_r_cord[0]+1]
 
 
-
     if game_on:
         if left:
             new_template = game_frame[d_l_cord[1]-25:d_l_cord[1], d_l_cord[0]:d_l_cord[0]+1]
@@ -72,7 +74,7 @@ while True:
                 if not pixel == template_pixel:
                     left = False
                     break
-
+            pyautogui.press('a')
 
         else:
             new_template = game_frame[d_r_cord[1]-25:d_r_cord[1], d_r_cord[0]:d_r_cord[0]+1]
@@ -83,10 +85,7 @@ while True:
                 if not pixel == template_pixel:
                     left = True
                     break
-
-
-
-        
+            pyautogui.press('d')
 
     # draw for debug
     if game_on:
@@ -100,7 +99,6 @@ while True:
         else:
             cv.rectangle(game_frame, d_l_min, d_l_max, (0, 0, 255), 3)
             cv.rectangle(game_frame, d_r_min, d_r_max, (0, 255, 0), 3)
-            
 
 
     else:
