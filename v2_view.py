@@ -1,6 +1,5 @@
 from window_capture import WindowCapture
 import cv2 as cv
-from time import sleep
 import math
 
 cap = WindowCapture('Timberman')
@@ -90,10 +89,9 @@ while True:
 
     # draw for debug
     if game_on:
-        
         if left:
             # left and right lines
-            cv.line(game_frame, (d_l_cord[0], l_found), (d_l_cord[0], d_l_cord[1]), (255, 0, 0), 10)
+            cv.line(game_frame, (d_l_cord[0], l_found), (d_l_cord[0], d_l_cord[1]), (0, 255, 0), 10)
             cv.line(game_frame, (d_r_cord[0], r_found), (d_r_cord[0], d_r_cord[1]), (0, 0, 255), 50)
 
             # for line in range(d_l_cord[1], 0, -65):
@@ -102,7 +100,7 @@ while True:
         else:
             # left and right lines
             cv.line(game_frame, (d_l_cord[0], l_found), (d_l_cord[0], d_l_cord[1]), (0, 0, 255), 50)
-            cv.line(game_frame, (d_r_cord[0], r_found), (d_r_cord[0], d_r_cord[1]), (255, 0, 0), 10)
+            cv.line(game_frame, (d_r_cord[0], r_found), (d_r_cord[0], d_r_cord[1]), (0, 255, 0), 10)
 
     # show
     cv.imshow('frame', game_frame)
